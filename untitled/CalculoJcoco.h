@@ -9,13 +9,14 @@ using namespace std;
 
 class CalculoJcoco {
 private:
-    unsigned long long numeroUsuario, numeroUsuario1, numeroUsuario2;
+    int numeroUsuario, numeroUsuario1, numeroUsuario2;
 public:
+    CalculoJcoco();
     CalculoJcoco(int pNumeroUsuario);
     CalculoJcoco(int pNumeroUsuario1, int pNumeroUsuario2);
     int getNumeroUsuario();
-    unsigned long long int getNumeroUsuario1();
-    unsigned long long int getNumeroUsuario2();
+    int getNumeroUsuario1();
+    int getNumeroUsuario2();
     void setNumeroUsuario(int pNumeroUsuario);
     void setNumeroUsuario1(int pNumeroUsuario1);
     void setNumeroUsuario2(int pNumeroUsuario2);

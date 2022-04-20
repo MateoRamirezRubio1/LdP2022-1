@@ -6,6 +6,8 @@
 
 using namespace std;
 
+CalculoJcoco::CalculoJcoco() {}
+
 CalculoJcoco::CalculoJcoco(int pNumeroUsuario) {
     numeroUsuario = pNumeroUsuario;
 }
@@ -19,11 +21,11 @@ int CalculoJcoco::getNumeroUsuario() {
     return numeroUsuario;
 }
 
-unsigned long long int CalculoJcoco::getNumeroUsuario1() {
+int CalculoJcoco::getNumeroUsuario1() {
     return numeroUsuario1;
 }
 
-unsigned long long int CalculoJcoco::getNumeroUsuario2() {
+int CalculoJcoco::getNumeroUsuario2() {
     return numeroUsuario2;
 }
 
@@ -42,7 +44,7 @@ void CalculoJcoco::setNumeroUsuario2(int pNumeroUsuario2) {
 void CalculoJcoco::escribirArchivo(string texto) {
     ofstream archivo;
 
-    archivo.open("MJS.casm", ios::out);
+    archivo.open("ejecucion_operaciones.casm", ios::out);
 
     if (archivo.fail()){
         throw "No se pudo abrir el archivo, intentelo de nuevo";
@@ -59,7 +61,48 @@ string CalculoJcoco::trianguloPascal() {
 }
 
 string CalculoJcoco::factorial() {
-    string codigoJcoco = "";
+    string codigoJcoco = "Function: factorial/1\n"
+                         "Constants: None, 0, 1\n"
+                         "Locals: n\n"
+                         "Globals: factorial\n"
+                         "BEGIN\n"
+                         "        LOAD_FAST             0\n"
+                         "        LOAD_CONST            1\n"
+                         "        COMPARE_OP            2\n"
+                         "        POP_JUMP_IF_FALSE     etiqueta\n"
+                         "        LOAD_CONST            2\n"
+                         "        RETURN_VALUE\n"
+                         "etiqueta: LOAD_FAST           0\n"
+                         "        LOAD_GLOBAL           0\n"
+                         "        LOAD_FAST             0\n"
+                         "        LOAD_CONST            2\n"
+                         "        BINARY_SUBTRACT\n"
+                         "        CALL_FUNCTION         1\n"
+                         "        BINARY_MULTIPLY\n"
+                         "        RETURN_VALUE\n"
+                         "        LOAD_CONST            0\n"
+                         "        RETURN_VALUE\n"
+                         "END\n"
+                         "\n"
+                         "Function: main/0\n"
+                         "Constants: None, "+ to_string(getNumeroUsuario()) + ", \"El resultado del factorial de\", \"es:\"\n"
+                         "Locals: result\n"
+                         "Globals: factorial, print\n"
+                         "BEGIN\n"
+                         "          LOAD_GLOBAL         0\n"
+                         "          LOAD_CONST          1\n"
+                         "          CALL_FUNCTION       1\n"
+                         "          STORE_FAST          0\n"
+                         "          LOAD_GLOBAL         1\n"
+                         "          LOAD_CONST          2\n"
+                         "          LOAD_CONST          1\n"
+                         "          LOAD_CONST          3\n"
+                         "          LOAD_FAST           0\n"
+                         "          CALL_FUNCTION       4\n"
+                         "          POP_TOP\n"
+                         "          LOAD_CONST          0\n"
+                         "          RETURN_VALUE\n"
+                         "END";
 
     return codigoJcoco;
 }

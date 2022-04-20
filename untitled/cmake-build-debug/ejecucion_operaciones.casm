@@ -1,0 +1,368 @@
+Function: main/0
+Constants: None, 2, "Ingrese el número de la columna:", 1, ", fila:", "para la primera matriz", "", "para la segunda matriz"
+Locals: n, matriz1, matriz2, j, i, num
+Globals: range, append, print, int, input, operacionesMatriz
+
+BEGIN
+          LOAD_CONST                1
+          STORE_FAST                0
+
+          ; Creacion de las 2 matrices
+          BUILD_LIST                0
+          STORE_FAST                1
+          BUILD_LIST                0
+          STORE_FAST                2
+
+          ; Pedir datos al usuario de la primera matriz
+          LOAD_GLOBAL               0
+          LOAD_FAST                 0
+          CALL_FUNCTION             1
+          GET_ITER
+    etiqueta4: FOR_ITER             etiqueta1
+          STORE_FAST                3
+          LOAD_FAST                 1
+          LOAD_ATTR                 1
+          BUILD_LIST                0
+          CALL_FUNCTION             1
+          POP_TOP
+          LOAD_GLOBAL               0
+          LOAD_FAST                 0
+          CALL_FUNCTION             1
+          GET_ITER
+    etiqueta3: FOR_ITER             etiqueta2
+          STORE_FAST                4
+          LOAD_GLOBAL               2
+          LOAD_CONST                2
+          LOAD_FAST                 4
+          LOAD_CONST                3
+          BINARY_ADD
+          LOAD_CONST                4
+          LOAD_FAST                 3
+          LOAD_CONST                3
+          BINARY_ADD
+          LOAD_CONST                5
+          CALL_FUNCTION             5
+          POP_TOP
+          LOAD_GLOBAL               3
+          LOAD_GLOBAL               4
+          LOAD_CONST                6
+          CALL_FUNCTION             1
+          CALL_FUNCTION             1
+          STORE_FAST                5
+          LOAD_FAST                 1
+          LOAD_FAST                 3
+          BINARY_SUBSCR
+          LOAD_ATTR                 1
+          LOAD_FAST                 5
+          CALL_FUNCTION             1
+          POP_TOP
+          JUMP_ABSOLUTE             etiqueta3
+    etiqueta2: JUMP_ABSOLUTE        etiqueta4
+
+          ; Pedir datos al usuario de la segunda matriz
+    etiqueta1: LOAD_GLOBAL          0
+          LOAD_FAST                 0
+          CALL_FUNCTION             1
+          GET_ITER
+    etiqueta8: FOR_ITER             etiqueta5
+          STORE_FAST                3
+          LOAD_FAST                 2
+          LOAD_ATTR                 1
+          BUILD_LIST                0
+          CALL_FUNCTION             1
+          POP_TOP
+          LOAD_GLOBAL               0
+          LOAD_FAST                 0
+          CALL_FUNCTION             1
+          GET_ITER
+    etiqueta7: FOR_ITER             etiqueta6
+          STORE_FAST                4
+          LOAD_GLOBAL               2
+          LOAD_CONST                2
+          LOAD_FAST                 4
+          LOAD_CONST                3
+          BINARY_ADD
+          LOAD_CONST                4
+          LOAD_FAST                 3
+          LOAD_CONST                3
+          BINARY_ADD
+          LOAD_CONST                7
+          CALL_FUNCTION             5
+          POP_TOP
+          LOAD_GLOBAL               3
+          LOAD_GLOBAL               4
+          LOAD_CONST                6
+          CALL_FUNCTION             1
+          CALL_FUNCTION             1
+          STORE_FAST                5
+          LOAD_FAST                 2
+          LOAD_FAST                 3
+          BINARY_SUBSCR
+          LOAD_ATTR                 1
+          LOAD_FAST                 5
+          CALL_FUNCTION             1
+          POP_TOP
+          JUMP_ABSOLUTE             etiqueta7
+    etiqueta6: JUMP_ABSOLUTE        etiqueta8
+
+          ; Llamar funcion operacionesMatriz
+    etiqueta5: LOAD_GLOBAL          5
+          LOAD_FAST                 1
+          LOAD_FAST                 2
+          CALL_FUNCTION             2
+          POP_TOP
+          LOAD_CONST                0
+          RETURN_VALUE
+END
+
+Function: operacionesMatriz/2
+Constants: None, 0, "Suma:", "Resta:", "Multiplicación:", "División:"
+Locals: matriz1, matriz2, suma, resta, multiplicacion, division, j, i
+Globals: range, len, append, print
+
+BEGIN
+          ; Se crea una matriz para cada operación
+          BUILD_LIST                0
+          STORE_FAST                2
+          BUILD_LIST                0
+          STORE_FAST                3
+          BUILD_LIST                0
+          STORE_FAST                4
+          BUILD_LIST                0
+          STORE_FAST                5
+
+          ; Se inicializa en 0 cada matriz anteriormente creada
+          LOAD_GLOBAL               0
+          LOAD_GLOBAL               1
+          LOAD_FAST                 0
+          CALL_FUNCTION             1
+          CALL_FUNCTION             1
+          GET_ITER
+    etiqueta2: FOR_ITER             etiqueta1
+          STORE_FAST                6
+          LOAD_FAST                 2
+          LOAD_ATTR                 2
+          BUILD_LIST                0
+          CALL_FUNCTION             1
+          POP_TOP
+          LOAD_FAST                 3
+          LOAD_ATTR                 2
+          BUILD_LIST                0
+          CALL_FUNCTION             1
+          POP_TOP
+          LOAD_FAST                 4
+          LOAD_ATTR                 2
+          BUILD_LIST                0
+          CALL_FUNCTION             1
+          POP_TOP
+          LOAD_FAST                 5
+          LOAD_ATTR                 2
+          BUILD_LIST                0
+          CALL_FUNCTION             1
+          POP_TOP
+          LOAD_GLOBAL               0
+          LOAD_GLOBAL               1
+          LOAD_FAST                 0
+          CALL_FUNCTION             1
+          CALL_FUNCTION             1
+          GET_ITER
+    etiqueta4: FOR_ITER             etiqueta3
+          STORE_FAST                7
+
+          ; Inicialización suma
+          LOAD_FAST                 2
+          LOAD_FAST                 6
+          BINARY_SUBSCR
+          LOAD_ATTR                 2
+          LOAD_CONST                1
+          CALL_FUNCTION             1
+          POP_TOP
+
+          ; Inicialización resta
+          LOAD_FAST                 3
+          LOAD_FAST                 6
+          BINARY_SUBSCR
+          LOAD_ATTR                 2
+          LOAD_CONST                1
+          CALL_FUNCTION             1
+          POP_TOP
+
+          ; Inicialización multiplicación
+          LOAD_FAST                 4
+          LOAD_FAST                 6
+          BINARY_SUBSCR
+          LOAD_ATTR                 2
+          LOAD_CONST                1
+          CALL_FUNCTION             1
+          POP_TOP
+
+          ; Inicialización división
+          LOAD_FAST                 5
+          LOAD_FAST                 6
+          BINARY_SUBSCR
+          LOAD_ATTR                 2
+          LOAD_CONST                1
+          CALL_FUNCTION             1
+          POP_TOP
+
+          JUMP_ABSOLUTE             etiqueta4
+    etiqueta3: JUMP_ABSOLUTE        etiqueta2
+
+          ; Operaciones con las matrices
+    etiqueta1: LOAD_GLOBAL          0
+          LOAD_GLOBAL               1
+          LOAD_FAST                 0
+          CALL_FUNCTION             1
+          CALL_FUNCTION             1
+          GET_ITER
+    etiqueta6: FOR_ITER             etiqueta5
+          STORE_FAST                6
+          LOAD_GLOBAL               0
+          LOAD_GLOBAL               1
+          LOAD_FAST                 0
+          CALL_FUNCTION             1
+          CALL_FUNCTION             1
+          GET_ITER
+    etiqueta8: FOR_ITER             etiqueta7
+          STORE_FAST                7
+
+          ; Suma
+          LOAD_FAST                 0
+          LOAD_FAST                 6
+          BINARY_SUBSCR
+          LOAD_FAST                 7
+          BINARY_SUBSCR
+          LOAD_FAST                 1
+          LOAD_FAST                 6
+          BINARY_SUBSCR
+          LOAD_FAST                 7
+          BINARY_SUBSCR
+          BINARY_ADD
+          LOAD_FAST                 2
+          LOAD_FAST                 6
+          BINARY_SUBSCR
+          LOAD_FAST                 7
+          STORE_SUBSCR
+
+          ; Resta
+          LOAD_FAST                 0
+          LOAD_FAST                 6
+          BINARY_SUBSCR
+          LOAD_FAST                 7
+          BINARY_SUBSCR
+          LOAD_FAST                 1
+          LOAD_FAST                 6
+          BINARY_SUBSCR
+          LOAD_FAST                 7
+          BINARY_SUBSCR
+          BINARY_SUBTRACT
+          LOAD_FAST                 3
+          LOAD_FAST                 6
+          BINARY_SUBSCR
+          LOAD_FAST                 7
+          STORE_SUBSCR
+          JUMP_ABSOLUTE             etiqueta8
+    etiqueta7: JUMP_ABSOLUTE        etiqueta6
+
+          ; Multiplicación
+    etiqueta5: LOAD_GLOBAL          0
+          LOAD_GLOBAL               1
+          LOAD_FAST                 0
+          CALL_FUNCTION             1
+          CALL_FUNCTION             1
+          GET_ITER
+    etiqueta10: FOR_ITER            etiqueta9
+          STORE_FAST                5
+          LOAD_GLOBAL               0
+          LOAD_GLOBAL               1
+          LOAD_FAST                 1
+          LOAD_CONST                1
+          BINARY_SUBSCR
+          CALL_FUNCTION             1
+          CALL_FUNCTION             1
+          GET_ITER
+    etiqueta12: FOR_ITER            etiqueta11
+          STORE_FAST                6
+          LOAD_GLOBAL               0
+          LOAD_GLOBAL               1
+          LOAD_FAST                 1
+          CALL_FUNCTION             1
+          CALL_FUNCTION             1
+          GET_ITER
+    etiqueta14: FOR_ITER             etiqueta13
+          STORE_FAST                7
+          LOAD_FAST                 4
+          LOAD_FAST                 5
+          BINARY_SUBSCR
+          LOAD_FAST                 6
+          BINARY_SUBSCR
+          LOAD_FAST                 0
+          LOAD_FAST                 5
+          BINARY_SUBSCR
+          LOAD_FAST                 7
+          BINARY_SUBSCR
+          LOAD_FAST                 1
+          LOAD_FAST                 7
+          BINARY_SUBSCR
+          LOAD_FAST                 6
+          BINARY_SUBSCR
+          BINARY_MULTIPLY
+          BINARY_ADD
+          LOAD_FAST                 4
+          LOAD_FAST                 5
+          BINARY_SUBSCR
+          LOAD_FAST                 6
+          STORE_SUBSCR
+          JUMP_ABSOLUTE             etiqueta14
+    etiqueta13: JUMP_ABSOLUTE       etiqueta12
+    etiqueta11: JUMP_ABSOLUTE       etiqueta10
+
+          ; Imprimir los resultados
+          ; Imprimir resultado Suma
+    etiqueta9: LOAD_GLOBAL          3
+          LOAD_CONST                2
+          CALL_FUNCTION             1
+          POP_TOP
+          LOAD_FAST                 2
+          GET_ITER
+    etiqueta16: FOR_ITER            etiqueta15
+          STORE_FAST                7
+          LOAD_GLOBAL               3
+          LOAD_FAST                 7
+          CALL_FUNCTION             1
+          POP_TOP
+          JUMP_ABSOLUTE             etiqueta16
+    
+          ; Imprimir resultado Resta
+    etiqueta15: LOAD_GLOBAL          3
+          LOAD_CONST                3
+          CALL_FUNCTION             1
+          POP_TOP
+          LOAD_FAST                 3
+          GET_ITER
+    etiqueta18: FOR_ITER            etiqueta17
+          STORE_FAST                7
+          LOAD_GLOBAL               3
+          LOAD_FAST                 7
+          CALL_FUNCTION             1
+          POP_TOP
+          JUMP_ABSOLUTE             etiqueta18
+
+          ; Imprimir resultado Multiplicación
+    etiqueta17: LOAD_GLOBAL         3
+          LOAD_CONST                4
+          CALL_FUNCTION             1
+          POP_TOP
+          LOAD_FAST                 4
+          GET_ITER
+    etiqueta20: FOR_ITER            etiqueta19
+          STORE_FAST                7
+          LOAD_GLOBAL               3
+          LOAD_FAST                 7
+          CALL_FUNCTION             1
+          POP_TOP
+          JUMP_ABSOLUTE             etiqueta20
+
+    etiqueta19: LOAD_CONST          0
+          RETURN_VALUE
+END
